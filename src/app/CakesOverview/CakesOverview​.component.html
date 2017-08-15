@@ -1,4 +1,14 @@
 <h1>Cakes</h1>
 <ul>
-  <li *ngFor='let cake of list'>{{ cake.name }}</li>
+  <li *ngFor='let cake of list'>
+    <p>{{ cake.name }}</p>
+    <ng-container *ngIf='cartList.indexOf(cake.id) === -1'>
+      <button (click)='addToCart(cake.id)'>add</button>
+    </ng-container>
+    <ng-container *ngIf='cartList.indexOf(cake.id) !== -1'>
+      <p>added!</p>
+      <button (click)='removeFromCart(cake.id)'>remove</button>
+    </ng-container>
+
+  </li>
 </ul>
